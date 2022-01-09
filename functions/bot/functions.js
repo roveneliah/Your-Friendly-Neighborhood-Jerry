@@ -1,11 +1,11 @@
-const { getProposals } = require('../snapshot.js');
+const { getProposals } = require('../api/snapshot.js');
 
-function replyToWith(trigger, response) {
-    return (message) => {
-        if (message.content === trigger)
-            message.reply({ content: response }) 
-    }
-}
+// function replyToWith(trigger, response) {
+//     return (message) => {
+//         if (message.content === trigger)
+//             message.reply({ content: response }) 
+//     }
+// }
   
 const format = ({title, id}) => `🗳 ${title}\nhttps://snapshot.org/#/krausehouse.eth/proposal/${id}`;
 const proposals = async () => {
@@ -17,6 +17,5 @@ const proposals = async () => {
 }
 
 module.exports = {
-    replyToWith,
     proposals
 }
