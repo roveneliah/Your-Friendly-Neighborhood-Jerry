@@ -12,13 +12,12 @@ const client = new Client({
 
 const getPostSnapshotUpdate = (client) => async () => {
     console.log("Getting newest Snapshot data.")
-    // console.log(`TEST1: ${functions.config().discordbot.key}`);
-    // console.log(`TEST2: ${functions.config().channel_ids.kh}`);
-    client.login(functions.config().discordbot.key);
+    await client.login(functions.config().discordbot.key);
     client.once('ready', async () => {
         const channel = client.channels.cache.get(functions.config().channel_ids.kh)
         await channel.send(await proposals());
         await channel.send("https://media.giphy.com/media/Swrnq3LiE8d3M7feEZ/giphy.gif");
+        process.exit(1);
     })
 }
 
