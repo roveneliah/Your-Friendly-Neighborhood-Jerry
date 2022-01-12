@@ -13,6 +13,7 @@ exports.nestedMapProp = (prop1) => (prop2) => (f) => (o) => ({
 })
 
 exports.bold = (x) => x ? `**${x}**`: x
+exports.italicize = (x) => x ? `*${x}*`: x
 
 exports.map = map;
 exports.compose = compose;

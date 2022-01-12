@@ -1,11 +1,11 @@
-const functions = require('firebase-functions');
-const { proposalDbUpdate } = require('./notion')
+const { proposalDbUpdate } = require('./notion');
+const { discordKey, kh } = require('../config')
 
 const getPostNotionUpdate = (client) => async () => {
     console.log("Getting newest Notion data.")
-    await client.login(functions.config().discordbot.key);
+    await client.login(discordKey);
     client.once('ready', async () => {
-        const channel = client.channels.cache.get(functions.config().channel_ids.kh)
+        const channel = client.channels.cache.get(kh)
         
         // NOTION SPECIFIC LOGIN HERE
         await channel.send(await proposalDbUpdate());
