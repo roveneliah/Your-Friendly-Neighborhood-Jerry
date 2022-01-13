@@ -1,4 +1,4 @@
-const { compose, map, either, contains } = require('ramda');
+const { compose, map, either, contains, andThen, composeWith } = require('ramda');
 
 exports.printPass = (x) => { console.log(x); return x; }
 exports.head = (arr) => arr ? arr[0] : arr
@@ -19,3 +19,18 @@ exports.map = map;
 exports.compose = compose;
 exports.either = either;
 exports.contains = contains;
+exports.composeWith = composeWith;
+
+exports.composeP = composeWith(andThen);
+exports.appendTo = (left) => (right) => left.concat(right);
+exports.log = (msg) => (x) => { console.log(msg); return x; }
+
+exports.spreadProp = (prop) => (o) => ({ ...o, ...o[prop]});
+exports.joinWith = (str) => (x) => x.join(str);
+exports.composeMaybe = composeWith((f, x) => x ? f(x) : x)
+exports.applyToProps = (fs) => (o1) => 
+  Object.keys(o1)
+    .reduce((o2, key) => fs[key] ? ({
+      ...o2, 
+      [key]: fs[key](o1[key])
+    }) : o2, o1)

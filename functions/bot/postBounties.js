@@ -1,13 +1,13 @@
 const functions = require('firebase-functions');
 const { bountiesDb } = require('./notion')
-const { discordKey, kh_test, test, kh_general } = require('../config');
+const { discordKey, kh_test, test, kh_general } = require('../localConfig');
 
 const getPostBounties = (client) => async () => {
     console.log("Getting newest Bounties data from Notion.")
     await client.login(discordKey);
     client.once('ready', async () => {
-        const channel = client.channels.cache.get(kh_general)
-        
+        const channel = client.channels.cache.get(test)
+
         // NOTION SPECIFIC LOGIN HERE
         const gifs = [
             "https://tenor.com/view/hyped-celebrate-excited-applause-calp-gif-15741462",

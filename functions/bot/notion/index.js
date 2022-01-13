@@ -1,5 +1,5 @@
 const { Client: NotionClient } = require("@notionhq/client")
-const { notionKey, proposals_db_id, bounties_db_id } = require('../../config')
+const { notionKey, proposals_db_id, bounties_db_id } = require('../../localConfig')
 
 const { bountiesDb } = require('./bountiesDb');
 const { proposalDbUpdate } = require('./proposalsDb');
