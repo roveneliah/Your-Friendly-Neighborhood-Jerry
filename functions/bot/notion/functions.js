@@ -1,4 +1,4 @@
-const { compose, map, either, contains, andThen, composeWith } = require('ramda');
+const { compose, map, either, contains, andThen, composeWith, add } = require('ramda');
 
 exports.printPass = (x) => { console.log(x); return x; }
 exports.head = (arr) => arr ? arr[0] : arr

@@ -6,7 +6,7 @@ const getPostBounties = (client) => async () => {
     console.log("Getting newest Bounties data from Notion.")
     await client.login(discordKey);
     client.once('ready', async () => {
-        const channel = client.channels.cache.get(test)
+        const channel = client.channels.cache.get(kh_general)
 
         // NOTION SPECIFIC LOGIN HERE
         const gifs = [

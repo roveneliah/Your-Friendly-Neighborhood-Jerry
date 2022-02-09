@@ -1,9 +1,9 @@
 require("dotenv").config();
 const functions = require("firebase-functions");
-const { postSnapshotUpdate, postNotionUpdate, postBounties, postShoutoutsReminder } = require("./bot");
+const { postSnapshotUpdate, postNotionUpdate, postBounties, postShoutoutsReminder, fetchUsers } = require("./bot");
 
 exports.snapshot = functions.pubsub
-    .schedule("0 12 * * *")
+    .schedule("0 20 * * *")
     .timeZone("America/New_York")
     .onRun(async (context) => {
         const promise = postSnapshotUpdate();
@@ -18,8 +18,17 @@ exports.snapshot = functions.pubsub
 //         promise.then(res => console.log("DONE") )
 //     });
 
+exports.fetchUsers = functions.pubsub
+    .schedule("25 2 * * *")
+    .timeZone("America/New_York")
+    .onRun(async (context) => {
+        const promise = fetchUsers();
+        promise.then(res => console.log("UPDATED USER DB") )
+    });
+
+
 exports.bounties = functions.pubsub
-    .schedule("24 10,22 * * *")
+    .schedule("30 11 1,7,14,21,28 * *")
     .timeZone("America/New_York")
     .onRun(async (context) => {
         const promise = postBounties();

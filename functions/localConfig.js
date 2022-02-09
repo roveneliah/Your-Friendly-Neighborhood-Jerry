@@ -7,4 +7,12 @@ module.exports = {
     notionKey: process.env.NOTION,
     proposals_db_id: process.env.PROPOSALS_DB,
     bounties_db_id: process.env.BOUNTIES_DB,
+    firebaseConfig: {
+        apiKey: process.env.apiKey,
+        authDomain: process.env.authDomain,
+        projectId: process.env.projectId,
+        storageBucket: process.env.storageBucket,
+        messagingSenderId: process.env.messagingSenderId,
+        appId: process.env.appId,
+    },
 }
