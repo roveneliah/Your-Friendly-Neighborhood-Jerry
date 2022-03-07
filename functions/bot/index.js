@@ -1,6 +1,6 @@
 const { Client, Intents } = require('discord.js')
 
-const { getPostSnapshotUpdate } = require('./postSnapshotUpdate');
+const { getPostSnapshotUpdate, getPostSnapshotSummaries } = require('./postSnapshotUpdate');
 const { getPostNotionUpdate } = require("./postNotionUpdate");
 const { getPostBounties } = require('./postBounties');
 const { getPostShoutoutsReminder } = require('./postShoutoutsReminder');
@@ -15,6 +15,7 @@ const client = new Client({
 });
 
 module.exports = {
+  postSnapshotSummaries: getPostSnapshotSummaries(client),
   postSnapshotUpdate: getPostSnapshotUpdate(client),
   postNotionUpdate: getPostNotionUpdate(client),
   postBounties: getPostBounties(client),

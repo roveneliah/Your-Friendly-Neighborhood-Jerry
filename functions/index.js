@@ -1,6 +1,11 @@
 require("dotenv").config();
 const functions = require("firebase-functions");
-const { postSnapshotUpdate, postNotionUpdate, postBounties, postShoutoutsReminder, fetchUsers } = require("./bot");
+const { postSnapshotUpdate, postNotionUpdate, postBounties, postShoutoutsReminder, fetchUsers, postSnapshotSummaries } = require("./bot");
+
+exports.snapshotSummaries = functions.https.onRequest(async (context) => {
+    const promise = postSnapshotSummaries();
+    promise.then(res => console.log("DONE w/ Summaries"));
+})
 
 exports.snapshot = functions.pubsub
     .schedule("0 20 * * *")
@@ -9,6 +14,11 @@ exports.snapshot = functions.pubsub
         const promise = postSnapshotUpdate();
         promise.then(res => console.log("DONE") )
     });
+
+exports.testSnapshot = functions.https.onRequest(async (context) => {
+    const promise = postSnapshotUpdate();
+    promise.then(res => console.log("DONE") )
+})
 
 // exports.notion = functions.pubsub
 //     .schedule("* * * * *")
