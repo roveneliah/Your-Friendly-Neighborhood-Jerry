@@ -5,7 +5,7 @@ const liveProposals = `query Proposals {
     first: 20,
     skip: 0,
     where: {
-      space_in: ["krausehouse.eth", "tecommons.eth", "gitcoindao.eth", "banklessvault.eth"],
+      space_in: ["krausehouse.eth"],
       state: "active",
     },
     orderBy: "created",
